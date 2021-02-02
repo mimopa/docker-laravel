@@ -1,0 +1,39 @@
+{
+    "name": "duncan3dc/bom-string",
+    "type": "library",
+    "description": "A small PHP library to handle byte order marks (BOM)",
+    "keywords": ["bom","utf-8","utf8", "utf-16", "utf16"],
+    "homepage": "https://github.com/duncan3dc/bom-string",
+    "license": "Apache-2.0",
+    "authors": [{
+        "name": "Craig Duncan",
+        "email": "git@duncanc.co.uk",
+        "homepage": "https://github.com/duncan3dc",
+        "role": "Developer"
+    }],
+    "require": {
+        "ext-mbstring": "*",
+        "php": "^7.2 || ^8.0"
+    },
+    "require-dev": {
+        "maglnet/composer-require-checker": "^2.0",
+        "phpstan/phpstan": "^0.11.7",
+        "squizlabs/php_codesniffer": "^3.4",
+        "phpunit/phpunit": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {"duncan3dc\\Bom\\": "src/"}
+    },
+    "autoload-dev": {
+        "psr-4": {"duncan3dc\\BomTests\\": "tests/"}
+    },
+    "scripts": {
+        "test": [
+            "vendor/bin/phpunit",
+            "vendor/bin/composer-require-checker",
+            "vendor/bin/phpstan analyse --level=max src tests",
+            "vendor/bin/phpcs --standard=PSR1,PSR2,PSR12 src tests",
+            "@composer validate --strict"
+        ]
+    }
+}
